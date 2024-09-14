@@ -2,6 +2,7 @@ import express from 'express';
 import mongoConfig from './config/mongoConfig';
 import dotenv from 'dotenv';
 import taskRoutes from './routes/taskRoutes';
+import noteRoutes from './routes/noteRoutes';
 
 // Initialize dotenv
 dotenv.config();
@@ -17,6 +18,8 @@ mongoConfig();
 
 // Task routes
 app.use('/api', taskRoutes);
+// Note routes
+app.use('/api', noteRoutes);
 
 app.get('/', (req, res) => {
   res.send('Hello, World!');

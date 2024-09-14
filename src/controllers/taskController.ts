@@ -15,25 +15,31 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-// Read Task (Get by ID)
-export const getTaskById = async (req: Request, res: Response): Promise<void> => {
+// Read Tasks (Get by mail)
+export const getTasksByMail = async (req: Request, res: Response): Promise<void> => {
   try {
-    const task = await Task.findById(req.params.id);
-    if (task) {
-      res.status(200).json(task);
-    } else {
-      res.status(404).json({ message: 'Task not found' });
+    const { mail } = req.params;
+
+    // Fetch tasks by mail
+    const tasks = await Task.find({ mail }); // Get only the note field
+
+    if (tasks.length === 0) {
+      res.status(404).json({ message: 'No tasks found for this email.' });
+      return;
     }
+
+    // Return the notes
+    res.status(200).json(tasks);
   } catch (error) {
-    res.status(500).json({ message: 'Error retrieving task', error });
+    res.status(500).json({ message: 'Server error', error });
   }
 };
 
 // Update Task
 export const updateTask = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { text, status, mail, type } = req.body;
-    const task = await Task.findByIdAndUpdate(req.params.id, { text, status, mail, type }, { new: true });
+    const { text, status } = req.body;
+    const task = await Task.findByIdAndUpdate(req.params.id, { text, status }, { new: true });
 
     if (task) {
       res.status(200).json(task);
@@ -56,15 +62,5 @@ export const deleteTask = async (req: Request, res: Response): Promise<void> => 
     }
   } catch (error) {
     res.status(500).json({ message: 'Error deleting task', error });
-  }
-};
-
-// Get All Tasks
-export const getAllTasks = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const tasks = await Task.find();
-    res.status(200).json(tasks);
-  } catch (error) {
-    res.status(500).json({ message: 'Error retrieving tasks', error });
   }
 };
