@@ -3,9 +3,9 @@ import { createnote, updatenote, deletenote, getNotesByMail } from '../controlle
 
 const router = express.Router();
 
-router.post('/notes', createnote); // Create a new note
-router.get('/notes/:mail', getNotesByMail); // Get a note by mail
-router.put('/notes/:id', updatenote); // Update a note by ID
-router.delete('/notes/:id', deletenote); // Delete a note by ID
+router.post('/', createnote);
+router.get('/:mail', getNotesByMail);
+router.put('/:id', updatenote);
+router.delete('/:id', deletenote);
 
 export default router;

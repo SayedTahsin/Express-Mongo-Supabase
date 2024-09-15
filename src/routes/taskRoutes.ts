@@ -3,9 +3,9 @@ import { createTask, getTasksByMail, updateTask, deleteTask } from '../controlle
 
 const router = express.Router();
 
-router.post('/tasks', createTask); // Create a new task
-router.get('/tasks/:mail', getTasksByMail); // Get a task by Mail
-router.put('/tasks/:id', updateTask); // Update a task by ID
-router.delete('/tasks/:id', deleteTask); // Delete a task by ID
+router.post('/', createTask);
+router.get('/:mail', getTasksByMail);
+router.put('/:id', updateTask);
+router.delete('/:id', deleteTask);
 
 export default router;

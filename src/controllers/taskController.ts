@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import Task from '../models/Task';
 
-// Create Task
 export const createTask = async (req: Request, res: Response): Promise<void> => {
   try {
     const { text, status, mail, type } = req.body;
@@ -15,27 +14,23 @@ export const createTask = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-// Read Tasks (Get by mail)
 export const getTasksByMail = async (req: Request, res: Response): Promise<void> => {
   try {
     const { mail } = req.params;
 
-    // Fetch tasks by mail
-    const tasks = await Task.find({ mail }); // Get only the note field
+    const tasks = await Task.find({ mail });
 
     if (tasks.length === 0) {
       res.status(404).json({ message: 'No tasks found for this email.' });
       return;
     }
 
-    // Return the notes
     res.status(200).json(tasks);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error });
   }
 };
 
-// Update Task
 export const updateTask = async (req: Request, res: Response): Promise<void> => {
   try {
     const { text, status } = req.body;
@@ -51,7 +46,6 @@ export const updateTask = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
-// Delete Task
 export const deleteTask = async (req: Request, res: Response): Promise<void> => {
   try {
     const task = await Task.findByIdAndDelete(req.params.id);

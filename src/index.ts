@@ -10,20 +10,16 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-// Express middlewares
+
+// a middleware that allows your Express app to understand JSON data in requests
 app.use(express.json());
 
 // MongoDB connection
 mongoConfig();
 
-// Task routes
-app.use('/api', taskRoutes);
-// Note routes
-app.use('/api', noteRoutes);
+app.use('/api/tasks', taskRoutes); // Task api routes
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+app.use('/api/notes', noteRoutes); // Note api routes
 
 app.listen(PORT, () => {
   console.log(`Server running in port: ${PORT}`);

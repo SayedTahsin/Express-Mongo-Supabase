@@ -1,6 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
-enum TypeOfTask {
+export enum TypeOfTask {
   General = 'General',
   Daily = 'Daily',
   Weekly = 'Weekly',
@@ -20,8 +20,8 @@ const taskSchema: Schema = new Schema(
     status: { type: Boolean, required: true },
     mail: { type: String, required: true },
     type: {
-      type: String, // Must use String in the schema
-      enum: Object.values(TypeOfTask), // Set allowed enum values
+      type: String,
+      enum: Object.values(TypeOfTask),
       required: true,
     },
   },

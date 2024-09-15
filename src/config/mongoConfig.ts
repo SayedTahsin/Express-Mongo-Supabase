@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import { scheduleCronJobs } from '../controllers/taskCorn';
 
 dotenv.config();
 
@@ -11,10 +12,11 @@ const mongoConfig = async (): Promise<void> => {
     }
 
     await mongoose.connect(uri);
+    scheduleCronJobs();
     console.log('MongoDB connected');
   } catch (error) {
     console.error('MongoDB connection error:', error);
-    process.exit(1); // Exit the process with failure code
+    process.exit(1);
   }
 };
 
