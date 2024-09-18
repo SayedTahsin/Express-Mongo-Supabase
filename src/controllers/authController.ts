@@ -11,7 +11,7 @@ const setTokenCookie = (res: Response, token: string) => {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     secure: isProduction,
   };
-  res.cookie('token', token, options);
+  res.cookie('taskAppToken', token, options);
 };
 
 export const signup = async (req: Request, res: Response) => {
@@ -58,7 +58,7 @@ export const login = async (req: Request, res: Response) => {
 };
 
 export const logout = (req: Request, res: Response) => {
-  res.clearCookie('token');
+  res.clearCookie('taskAppToken');
   res.status(200).json({ message: 'Logout successful' });
 };
 
@@ -76,7 +76,7 @@ export const resetPassword = async (req: Request, res: Response) => {
 
 // Middleware to renew token on each visit
 export const renewToken = async (req: Request, res: Response, next: Function) => {
-  const token = req.cookies.token;
+  const token = req.cookies.taskAppToken;
 
   if (token) {
     try {
