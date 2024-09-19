@@ -70,4 +70,5 @@ This is the server-side code for The TaskApp. Build with Express.js, Typescript,
 
 ### To-DO
 - [ ] Add tags in notes
-- [ ] Make deploy ready
+- [ ] Make deploy ready & Deploy
+- [ ] Build Front-end
