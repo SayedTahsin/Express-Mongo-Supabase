@@ -3,9 +3,9 @@ import Note from '../models/Note';
 
 export const createnote = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { text, mail } = req.body;
+    const { text, mail, color } = req.body;
 
-    const newnote = new Note({ text, mail });
+    const newnote = new Note({ text, mail, color });
     const savednote = await newnote.save();
 
     res.status(201).json(savednote);
@@ -33,8 +33,8 @@ export const getNotesByMail = async (req: Request, res: Response): Promise<void>
 
 export const updatenote = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { text } = req.body;
-    const note = await Note.findByIdAndUpdate(req.params.id, { text }, { new: true });
+    const { text, color } = req.body;
+    const note = await Note.findByIdAndUpdate(req.params.id, { text, color }, { new: true });
 
     if (note) {
       res.status(200).json(note);
