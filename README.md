@@ -2,7 +2,7 @@
 
 ## Overview
 This is the server-side code for The TaskApp. Build with Express.js, Typescript, MongoDB & Supabase.
-Deployed in Railway : https://task-app-backend-production-1432.up.railway.app/
+<br>Deployed in Railway : https://task-app-backend-production-1432.up.railway.app/
 
 *** Decided to re-write the project Using Hono & Bun as I couldn't find any good free hosting site for express server ***
 
