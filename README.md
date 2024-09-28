@@ -4,7 +4,7 @@
 This is the server-side code for The TaskApp. Build with Express.js, Typescript, MongoDB & Supabase.
 <br>Deployed in Railway : https://task-app-backend-production-1432.up.railway.app/
 
-*** Decided to re-write the project Using Hono & Bun as I couldn't find any good free hosting site for express server ***
+*** Decided to re-write the project Using Hono & Bun as I couldn't find any good free hosting site for express server 
 
 ## Features
 - Manage task with four categories: Daily(resets everynight), Weekly(resets on every Sunday night), Monthly (resets on last night of the month) & General that never resets.
