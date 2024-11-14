@@ -1,4 +1,4 @@
-# TaskApp Backend
+# Routine App Backend
 
 ## Overview
 This is the server-side code for The Routine App. Build with Express.js, Typescript, MongoDB & Supabase.
