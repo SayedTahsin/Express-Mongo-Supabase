@@ -1,7 +1,7 @@
 # TaskApp Backend
 
 ## Overview
-This is the server-side code for The TaskApp. Build with Express.js, Typescript, MongoDB & Supabase.
+This is the server-side code for The Routine App. Build with Express.js, Typescript, MongoDB & Supabase.
 <br>Deployed in Railway : https://task-app-backend-production-1432.up.railway.app/
 
 <a href="https://github.com/SayedTahsin/Hono-Bun-Mongo">Same project build with Hono.js on Bun Enviromnet & Used MongoDB</a>
